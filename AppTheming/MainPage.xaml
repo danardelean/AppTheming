@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppTheming.MainPage"
+            BackgroundColor="{DynamicResource PageBackgroundColor}"
+           >
+
+    <ContentPage.Resources>
+        <Style x:Key="HeaderBg" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="{DynamicResource PageBackgroundColor}"/>
+            <Setter Property="Padding" Value="36,48,36,36"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+
+        <Style x:Key="HeaderTitle" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="36"/>
+        </Style>
+    </ContentPage.Resources>
+    <StackLayout>
+        <Frame Style="{StaticResource HeaderBg}">
+            <Label
+        Style="{StaticResource HeaderTitle}"
+        Text="Welcome to Xamarin.Forms!" />
+        </Frame>
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <CheckBox IsChecked="{Binding UseDeviceThemeSettings}" VerticalOptions="Center" />
+            <Label Text="Use device settings"
+            VerticalOptions="Center" TextColor="{AppThemeBinding Dark=White, Light=Black}"/>
+        </StackLayout>
+
+        <StackLayout
+    IsVisible="{Binding UseCustomThemeSettings}"
+    Orientation="Horizontal"
+    Spacing="10">
+            <CheckBox IsChecked="{Binding UseDarkMode}" VerticalOptions="Center"/>
+            <Label Text="Dark Theme" TextColor="{DynamicResource PrimaryTextColor}"
+            VerticalOptions="Center"/>
+        </StackLayout>
+
+        <StackLayout
+    IsVisible="{Binding UseCustomThemeSettings}"
+    Orientation="Horizontal"
+    Spacing="10">
+            <CheckBox IsChecked="{Binding UseLightMode}" VerticalOptions="Center"/>
+            <Label Text="Light Theme" TextColor="{DynamicResource PrimaryTextColor}"
+            VerticalOptions="Center"/>
+        </StackLayout>
+    </StackLayout>
+
+
+</ContentPage>
